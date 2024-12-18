@@ -2,3 +2,9 @@ pandas
 pymongo
 ensure
 typing
+openpyxl
+scikit-learn
+xgboost
+
+
+-e .
