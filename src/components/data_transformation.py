@@ -11,7 +11,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler , OrdinalEncoder 
 
-from src.utils.utils import save_object
+from utils.utils import save_object
 
 
 
@@ -89,12 +89,12 @@ class DataTransformation:
             preprocessor_obj.transform(input_feature_test_df)
             logging.info('train and test data preprocessed successfully')
 
-            train_arr = np.c_[input_feature_train_df, np.array(target_train_df)]
+            train_arr = np.c_[input_feature_train_df, np.array(target_train_df)] # np.c_ concat axis=1
             test_arr = np.c_[input_feature_test_df, np.array(target_test_df)]
-            logging.info('train and test data transformed to numpy arrays')
+            logging.info('train and test data transformed to numpy arrays and concatenated')
 
             
-            save_object(preprocessor_obj, self.data_transformation_config.preprocessor_obj_file_path)
+            save_object(obj=preprocessor_obj, file_path=self.data_transformation_config.preprocessor_obj_file_path)
             logging.info('save preprocessor object to artifacts folder')
 
             logging.info('data transformation completed successfully')
@@ -110,7 +110,7 @@ if __name__ == '__main__':
     data_transformation = DataTransformation()
     train_path =os.path.join('artifacts','train.csv')
     test_path = os.path.join('artifacts','test.csv')
-    train_arr, test_arr, preprocessor_obj = data_transformation.initiate_data_transformation(train_path, test_path)
+    train_arr, test_arr, _ = data_transformation.initiate_data_transformation(train_path, test_path)
     print(train_arr[:5])
     print(test_arr[:5])
 
