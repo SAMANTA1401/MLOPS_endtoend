@@ -5,23 +5,23 @@ from src.logger.logging import logging
 
 import os
 import sys
-from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 from pathlib import Path # create path class os independent path
+from src.utils.utils import save_object , evaluate_model , load_object
 
 
 
 @dataclass
-class DataIngestionConfig:
+class ModelEvalutionConfig:
     pass
   
 
-class DataIngestion:
+class ModelEvalution:
     def __init__(self):
         pass
 
     
-    def initiate_data_ingestion(self):
+    def initiate_model_evaluation(self):
         try:
             pass
         except Exception as e:
