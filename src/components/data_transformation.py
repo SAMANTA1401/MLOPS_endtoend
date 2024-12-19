@@ -49,7 +49,7 @@ class DataTransformation:
                 steps=[
                     ('imputer', SimpleImputer(strategy='most_frequent')),
                     ('ordinal_encoder', OrdinalEncoder(categories=[cut_categories, color_categories, clarity_categories])),
-                    ('scaler', StandardScaler())
+                  
                 ]
             )
 
@@ -85,13 +85,16 @@ class DataTransformation:
             preprocessor_obj = self.get_data_transformer_object()
             logging.info('applying preprocessing object on training and testing datasets')
 
-            preprocessor_obj.fit_transform(input_feature_train_df)
-            preprocessor_obj.transform(input_feature_test_df)
+            input_feature_train_arr = preprocessor_obj.fit_transform(input_feature_train_df)
+            input_feature_test_arr = preprocessor_obj.transform(input_feature_test_df)
             logging.info('train and test data preprocessed successfully')
 
-            train_arr = np.c_[input_feature_train_df, np.array(target_train_df)] # np.c_ concat axis=1
-            test_arr = np.c_[input_feature_test_df, np.array(target_test_df)]
+            train_arr = np.c_[input_feature_train_arr, np.array(target_train_df)] # np.c_ concat axis=1
+            test_arr = np.c_[input_feature_test_arr, np.array(target_test_df)]
             logging.info('train and test data transformed to numpy arrays and concatenated')
+
+            logging.info(f'Train arr Head : \n{train_arr[:5]}')
+            logging.info(f'Test arr Head : \n{test_arr[:5]}')
 
             
             save_object(obj=preprocessor_obj, file_path=self.data_transformation_config.preprocessor_obj_file_path)

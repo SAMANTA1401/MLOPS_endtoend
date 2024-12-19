@@ -34,7 +34,7 @@ class ModelEvaluation:
 
                 y_pred = model.predict(X_test)
 
-                R2,MAE,MSE = evaluate_model(y_test, y_pred)
+                MAE, MSE, R2 = evaluate_model(y_test, y_pred)
 
                 
                 report_r2_score[model_name] = R2

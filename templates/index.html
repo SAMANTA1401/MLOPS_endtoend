@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gems-stone-price</title>
+ 
+    <style>
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h1 {
+        text-align: center;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 10px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: rgba(185, 227, 184, 0.64);
+      }
+
+      tr:nth-child(even) {
+        background-color: rgb(198, 168, 200);
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        padding: 5px;
+        background-color: rgba(161, 188, 216, 0.86);
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .grid-item {
+        width: 100%;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="number"] {
+        height: 10px;
+        padding: 5px;
+        margin-bottom: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      input[type="submit"] {
+        height: 30px;
+        padding: 5px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: rgba(197, 60, 23, 0.78);
+      }
+      #price-output {
+        margin-top: 5px;
+        padding: 5px;
+        background-color: rgb(132, 218, 187);
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Gems-Stone Price Calculator</h1>
+      <table>
+        <tr>
+          <th>Variable Name</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>Carat</td>
+          <td>Carat weight of the cubic zirconia.</td>
+        </tr>
+        <tr>
+          <td>Cut</td>
+          <td>
+            Describe the cut quality of the cubic zirconia. Quality is
+            increasing order Fair, Good, Very Good, Premium, Ideal.
+          </td>
+        </tr>
+        <tr>
+          <td>Color</td>
+          <td>
+            Colour of the cubic zirconia. With D being the best and J the worst.
+          </td>
+        </tr>
+        <tr>
+          <td>Clarity</td>
+          <td>
+            Cubic zirconia Clarity refers to the absence of the Inclusions and
+            Blemishes. (In order from Best to Worst, FL = flawless, I3= level 3
+            inclusions) FL, IF, VVS1, VVS2, VS1, VS2, SI1, SI2, I1, I2, I3
+          </td>
+        </tr>
+        <tr>
+          <td>Depth</td>
+          <td>
+            The Height of a cubic zirconia, measured from the Culet to the
+            table, divided by its average Girdle Diameter.
+          </td>
+        </tr>
+        <tr>
+          <td>Table</td>
+          <td>
+            The Width of the cubic zirconia's Table expressed as a Percentage of
+            its Average Diameter.
+          </td>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td>The Price of the cubic zirconia.</td>
+        </tr>
+        <tr>
+          <td>X</td>
+          <td>Length of the cubic zirconia in mm.</td>
+        </tr>
+        <tr>
+          <td>Y</td>
+          <td>Width of the cubic zirconia in mm.</td>
+        </tr>
+        <tr>
+          <td>Z</td>
+          <td>Height of the cubic zirconia in mm.</td>
+        </tr>
+      </table>
+
+      <div>
+        <form id="myForm" action="/predict" method="post">
+          <div class="grid-container">
+            <div class="grid-item">
+              <label for="cut">Cut:</label>
+              <select id="cut" name="cut">
+                {% for category in cut_category %}
+                <option value="{{ category }}">{{ category }}</option>
+                {% endfor %}
+              </select>
+              <br /><br />
+              <label for="color">Color:</label>
+              <select id="color" name="color">
+                {% for category in color_category %}
+                <option value="{{ category }}">{{ category }}</option>
+                {% endfor %}
+              </select>
+              <br /><br />
+              <label for="carat">Carat:</label>
+              <input type="number" step="0.01" id="carat" name="carat" />
+              <br /><br />
+              <label for="depth">Depth:</label>
+              <input type="number" step="0.01" id="depth" name="depth" />
+              <br /><br />
+              <label for="table">Table:</label>
+              <input type="number" step="0.01" id="table" name="table" />
+            </div>
+            <div class="grid-item">
+              <label for="clarity">Clarity:</label>
+              <select id="clarity" name="clarity">
+                {% for category in clarity_category %}
+                <option value="{{ category }}">{{ category }}</option>
+                {% endfor %}
+              </select>
+              <br /><br />
+              <label for="x">X:</label>
+              <input type="number" step="0.01" id="x" name="x" />
+              <br /><br />
+              <label for="y">Y:</label>
+              <input type="number" step="0.01" id="y" name="y" />
+              <br /><br />
+              <label for="z">Z:</label>
+              <input type="number" step="0.01" id="z" name="z" />
+              <br /><br />
+              <input type="submit" value="Submit" style="float: center" />
+            </div>
+          </div>
+        </form>
+        <div id="price-output"><p>The predicted price is : Rs {{ price}}</p></div>
+      </div>
+    </div>
+  </body>
+  
+</html>
