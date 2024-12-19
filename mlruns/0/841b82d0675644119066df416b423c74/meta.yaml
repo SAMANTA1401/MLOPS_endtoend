@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/a27_YEARS_OLD/MLOPS_AWS_SAGEMAKER/mlruns/0/841b82d0675644119066df416b423c74/artifacts
+end_time: 1734610135575
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 841b82d0675644119066df416b423c74
+run_name: glamorous-whale-388
+run_uuid: 841b82d0675644119066df416b423c74
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734610111146
+status: 4
+tags: []
+user_id: lenovo

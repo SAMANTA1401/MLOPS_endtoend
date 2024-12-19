@@ -22,6 +22,10 @@ def predict():
     logging.info('received prediction request')
     try:
         features = request.form.to_dict()
+        # or one by one features
+        # carat = float(request.form.get('carat'))
+        # depth = float(request.form.get('depth'))
+        # so on 
         logging.info(f'received raw features: \n{features}')
         obj = PredictionPipeline()
         data = CustomData(carat=features['carat'], depth=features['depth'], table=features['table'], x=features['x'], y=features['y'], z=features['z'], cut=features['cut'], color=features['color'], clarity=features['clarity'])

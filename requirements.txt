@@ -1,10 +1,10 @@
 pandas
-pymongo
-ensure
 typing
 openpyxl
 scikit-learn
 xgboost
+mlflow
+setuptools  #upgrade
 
 
 -e .

@@ -1,9 +1,10 @@
 numpy
 seaborn
 flask
-mlflow==2.2.2
+mlflow
 dvc
 ipykernel
+pandas
 
 -e .
 

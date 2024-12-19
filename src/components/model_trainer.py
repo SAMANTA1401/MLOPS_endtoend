@@ -48,5 +48,10 @@ class ModelTrainer:
         except Exception as e:
             error =  CustomException(e, sys)
             raise logging.info(error)
-        
 
+
+
+
+if __name__ == '__main__':
+    obj = ModelTrainer()
+    obj.initiate_model_training()

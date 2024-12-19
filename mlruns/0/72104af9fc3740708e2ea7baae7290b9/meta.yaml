@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/a27_YEARS_OLD/MLOPS_AWS_SAGEMAKER/mlruns/0/72104af9fc3740708e2ea7baae7290b9/artifacts
+end_time: 1734612147066
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 72104af9fc3740708e2ea7baae7290b9
+run_name: thundering-ram-359
+run_uuid: 72104af9fc3740708e2ea7baae7290b9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734612137315
+status: 4
+tags: []
+user_id: lenovo
