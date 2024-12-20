@@ -1,0 +1,27 @@
+stages:
+  data_ingestion:
+     description: "This stage is responsible for ingesting data from various sources."
+
+
+
+
+
+  data_validation:
+
+
+
+
+
+  data_transformation:
+
+
+
+
+
+  model_trainer:
+
+
+
+
+
+  model_evaluation:

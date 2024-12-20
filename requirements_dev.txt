@@ -5,6 +5,8 @@ mlflow
 dvc
 ipykernel
 pandas
+apache-airflow
+setuptools  #upgrade
 
 -e .
 
