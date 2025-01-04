@@ -1,0 +1,2 @@
+api, webscraping > periodic data >  database/s3 > data-ingestion > data-validation  > analysis > feature-engineering > data-transformation > store transform objet to s3 > model-training > model-testing > store model to s3 > model-evaluation > store evaluated model to s3 > model loading > prediction > 
+CT - CI - CD >>>> using airflow 
